@@ -9,10 +9,15 @@ const NavBar=props=>{
                     <LineOutlined style={{color:'#274c77'}}/>
                 </div>
                 <div className="icon-container">
-                    <MailOutlined style={{color:'#274c77'}}/>
+                    <a href= "mailto: txcylinder@gmail.com">
+                        <MailOutlined style={{color:'#274c77'}}/>
+                    </a>
                 </div>
                 <div className="icon-container">
-                    <LinkedinOutlined style={{color:'#274c77'}}/>
+                    <a href="https://www.linkedin.com/company/cylinderx/" target='blank'>
+                        <LinkedinOutlined style={{color:'#274c77'}}/>
+                    </a>
+                    
                 </div>
             </div>
         </div>

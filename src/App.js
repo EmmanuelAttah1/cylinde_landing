@@ -1,26 +1,42 @@
 import './App.css';
 import MyTimer from './components/countDown';
 import NavBar from './components/navbar';
-import { Button, Input, Space } from 'antd';
+import { Button, Input, Space, message } from 'antd';
 
 import { useState } from 'react';
+import { subscribe } from './api';
 
 function App() {
   const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  const [messageApi, contextHolder] = message.useMessage();
 
   const saveEmail = ()=>{
-    if(email.length > 0){
-      // JoinWaitList(email)
-      // .then(res=>{
-      //   console.log("Joined WaitList Successful");
-      // })
-    }else{
-      console.log("Enter a valid email");
-    }
+    setLoading(true)
+    subscribe(email)
+    .then(res=>{
+      setLoading(false)
+      setEmail("")
+      messageApi.open({
+          type: 'success',
+          content: "You've successfully joined our waitlist",
+          duration: 5
+      });
+    })
+    .catch(err=>{
+      setLoading(false)
+      messageApi.open({
+        type: 'error',
+        content: err,
+        duration: 5
+    });
+    })
   }
 
   return (
     <div className="App">
+      {contextHolder}
       <NavBar/>
       <div id="my-body">
         <div id="my-body-left">
@@ -42,10 +58,10 @@ function App() {
                   height:'45px'
                 }}
               >
-                <Input placeholder='Your Email...' onInput={(e)=>{
+                <Input placeholder='Your Email...' value={email} onInput={(e)=>{
                   setEmail(e.target.value);
                 }} />
-                <Button type="primary" onClick={saveEmail} style={{height:'45px', backgroundColor:"#274c77"}}>Notify Me</Button>
+                <Button type="primary" loading={loading} onClick={saveEmail} style={{height:'45px', backgroundColor:"#274c77"}}>Notify Me</Button>
               </Space.Compact>
             </div>
           </div>

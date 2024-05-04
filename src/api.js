@@ -1,32 +1,32 @@
-import { contactSchema } from './user';
-const mongoose = require('mongoose')
+const url = "https://NumiAttahKb.pythonanywhere.com/contact/"
 
-
-const connectionString = `mongodb+srv://attahzuzu:123_Batman_456@visor-landing.1ud9hab.mongodb.net/mycontacts-backend?retryWrites=true&w=majority&appName=visor-landing`
-
-const connectDB = async () => {
-    try {
-        await mongoose.connect(connectionString);
-        console.log("Database Connected: ", mongoose.connection.host, mongoose.connection.name);
-        return true;
-    } catch (error) {
-        console.error("Connection error:", error);
-        // process.exit(1);
-    }
-};
-
-export const JoinWaitList = async (email) => {
-    try {
-        await connectDB();
-        await contactSchema.create({ email });
-        console.log("Email added to waitlist:", email);
-
-        //disconnect
-        await mongoose.disconnect();
-
-        return true;
-    } catch (error) {
-        console.error("Error adding email to waitlist:", error);
-        return false;
-    }
-};
+export function subscribe(email){
+    
+    return new Promise((res,rej)=>{
+        const form = new FormData()
+        if(email !== ""){
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (email.match(validRegex)) {
+    
+                form.append("email",email)
+                form.append("first_name",email)
+                form.append("last_name",email)
+    
+                fetch(url, {
+                method: "POST",
+                body: form,
+                })
+                .then(response => {
+                    if(response.status === 200){res(true)}else{rej("Something went wrong, please try again")}
+                    
+                })
+            
+            } else {
+                rej("Enter a valid email")
+            }
+        }else{
+            rej("Enter a valid email address")
+        }
+    })
+    
+  }
