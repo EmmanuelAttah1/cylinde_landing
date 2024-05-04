@@ -1,7 +1,19 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+.App{
+  padding: 30px 40px 10px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -34,5 +46,182 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Custom style */
+
+/* Navbar */
+#navbar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#label{
+  color:#274c77;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#contact{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Timer */
+
+#timer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+}
+
+.time-value{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:80px;
+  height: 80px;
+  background-color: #ffffff;
+  color:#274c77;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.time-label{
+  text-align: center;
+}
+
+/* body */
+
+#my-body{
+  display: flex;
+  height: 100%;
+  gap:20px;
+}
+
+#my-body-left{
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#my-body-right{
+  position: relative;
+  flex:1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#body-right-inner{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background-color: #c1c4c672;
+  border-radius: 20px;
+  transform:rotate(40deg);
+  z-index: -10;
+}
+
+#body-left-inner{
+  width: 70%;
+}
+
+#body-left-inner h1{
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.info-text{
+  margin: 20px 0px;
+  padding: 0px 30px;
+  font-size: 14px;
+}
+
+
+#power{
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+}
+
+@media only screen and (max-width:1300px) {
+  #body-right-inner{
+    transform:rotate(20deg);
+  }
+
+  #body-left-inner{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  #body-right-inner{
+    left:52%;
+    top:25%;
+    height: 50%;
+    transform:rotate(0deg);
+  }
+
+  .time-value{
+    width:50px;
+    height: 50px;
+    font-size: 25px;
+  }
+
+  #body-left-inner{
+    width: 100%;
+  }
+
+  #body-left-inner h1{
+    font-size: 25px;
+  }
+
+  #body-left-inner h4{
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width:750px) {
+  .App{
+    padding: 0px;
+  }
+  #navbar{
+    padding:40px 20px;
+    margin-bottom: 0px;
+  }
+  #my-body{
+    flex-direction: column;
+    gap:0px;
+  }
+  #body-right-inner{
+    display: none;
+  }
+  #my-body-left{
+    height: fit-content;
+    padding: 0px 20px;
+    align-content: flex-start;
+  }
+  #my-body-right{
+    background-color: #c1c4c672;
+    height: fit-content;
+  }
+  #power{
+    text-align: center;
+    background-color: #c1c4c672;
+    padding-bottom: 10px;
   }
 }
