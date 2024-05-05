@@ -9,15 +9,13 @@ export function subscribe(email){
             if (email.match(validRegex)) {
     
                 form.append("email",email)
-                form.append("first_name",email)
-                form.append("last_name",email)
     
                 fetch(url, {
                 method: "POST",
                 body: form,
                 })
                 .then(response => {
-                    if(response.status === 200){res(true)}else{rej("Something went wrong, please try again")}
+                    if(response.status === 201){res(true)}else{rej("Something went wrong, please try again")}
                     
                 })
             
