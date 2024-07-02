@@ -7,17 +7,37 @@ import { useState } from 'react';
 import { subscribe } from './api';
 
 function App() {
-  const [email, setEmail] = useState("")
+
+  const [formData, setFormData] = useState({
+    email:'',
+    first_name:"",
+    last_name:"",
+    state:"",
+    city:""
+  })
+
+  const updateFormData=(id,value)=>{
+    const data = {...formData}
+    data[id] = value
+    setFormData(data)
+  }
+
   const [loading, setLoading] = useState(false)
 
   const [messageApi, contextHolder] = message.useMessage();
 
   const saveEmail = ()=>{
     setLoading(true)
-    subscribe(email)
+    subscribe(formData)
     .then(res=>{
       setLoading(false)
-      setEmail("")
+      setFormData({
+        email:'',
+        first_name:"",
+        last_name:"",
+        state:"",
+        city:""
+      })
       messageApi.open({
           type: 'success',
           content: "You've successfully joined our waitlist",
@@ -51,6 +71,39 @@ function App() {
               </ul>
             </div>
             <div>
+              <h5>Subscribe to Update</h5><br/>
+              <div class="my-row">
+                <div class="my-input">
+                  <div class="input-label">First Name</div>
+                  <Input placeholder='John' value={formData['first_name']} onInput={(e)=>{
+                    updateFormData('first_name',e.target.value);
+                  }} />
+                </div>
+
+                <div class="my-input">
+                  <div class="input-label">Last Name</div>
+                  <Input placeholder='Doe' value={formData['last_name']} onInput={(e)=>{
+                    updateFormData('last_name',e.target.value);
+                  }} />
+                </div>
+              </div>
+
+              <div class="my-row">
+                <div class="my-input">
+                  <div class="input-label">City</div>
+                  <Input placeholder='John' value={formData['city']} onInput={(e)=>{
+                    updateFormData('city',e.target.value);
+                  }} />
+                </div>
+
+                <div class="my-input">
+                  <div class="input-label">State</div>
+                  <Input placeholder='Doe' value={formData['state']} onInput={(e)=>{
+                    updateFormData('state',e.target.value);
+                  }} />
+                </div>
+              </div>
+              
               <Space.Compact
                 style={{
                   margin:'20px 0px',
@@ -58,8 +111,8 @@ function App() {
                   height:'45px'
                 }}
               >
-                <Input placeholder='Your Email...' value={email} onInput={(e)=>{
-                  setEmail(e.target.value);
+                <Input placeholder='Your Email...' value={formData['email']} onInput={(e)=>{
+                  updateFormData('email',e.target.value);
                 }} />
                 <Button type="primary" loading={loading} onClick={saveEmail} style={{height:'45px', backgroundColor:"#274c77"}}>Notify Me</Button>
               </Space.Compact>
