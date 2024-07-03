@@ -71,7 +71,7 @@ function App() {
               </ul>
             </div>
             <div>
-              <h5>Subscribe to Update</h5><br/>
+              <h5>Subscribe to stay informed</h5><br/>
               <div class="my-row">
                 <div class="my-input">
                   <div class="input-label">First Name</div>
@@ -91,14 +91,14 @@ function App() {
               <div class="my-row">
                 <div class="my-input">
                   <div class="input-label">City</div>
-                  <Input placeholder='John' value={formData['city']} onInput={(e)=>{
+                  <Input placeholder='Abuja' value={formData['city']} onInput={(e)=>{
                     updateFormData('city',e.target.value);
                   }} />
                 </div>
 
                 <div class="my-input">
                   <div class="input-label">State</div>
-                  <Input placeholder='Doe' value={formData['state']} onInput={(e)=>{
+                  <Input placeholder='FCT' value={formData['state']} onInput={(e)=>{
                     updateFormData('state',e.target.value);
                   }} />
                 </div>
