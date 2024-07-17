@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cylinde_landing/static/css/main.14c372f9.css",
-    "main.js": "/cylinde_landing/static/js/main.69c582fc.js",
+    "main.js": "/cylinde_landing/static/js/main.be0c0b7a.js",
     "static/js/453.6eb9f284.chunk.js": "/cylinde_landing/static/js/453.6eb9f284.chunk.js",
     "index.html": "/cylinde_landing/index.html",
     "main.14c372f9.css.map": "/cylinde_landing/static/css/main.14c372f9.css.map",
-    "main.69c582fc.js.map": "/cylinde_landing/static/js/main.69c582fc.js.map",
+    "main.be0c0b7a.js.map": "/cylinde_landing/static/js/main.be0c0b7a.js.map",
     "453.6eb9f284.chunk.js.map": "/cylinde_landing/static/js/453.6eb9f284.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.14c372f9.css",
-    "static/js/main.69c582fc.js"
+    "static/js/main.be0c0b7a.js"
   ]
 }
