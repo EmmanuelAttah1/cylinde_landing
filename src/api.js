@@ -1,4 +1,4 @@
-const url = "https://NumiAttahKb.pythonanywhere.com/contact/"
+const url = "https://numiattah.pythonanywhere.com/subscribe/"
 
 export function subscribe(data){
     
