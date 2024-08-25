@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 const MyTimer=props=>{
 
     const caculateTimeLeft=()=>{
-        const difference = new Date("2024-08-20") - new Date()
+        const difference = new Date("2024-09-20") - new Date()
 
         let timeLeft = {}
 
